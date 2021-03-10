@@ -1,0 +1,63 @@
+{
+  "groups": [
+    {
+      "name": "binlog",
+      "type": "com.fdgj.binlog.properties.BinlogProperties",
+      "sourceType": "com.fdgj.binlog.properties.BinlogProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "binlog.exclude-databases",
+      "type": "java.lang.String",
+      "description": "过滤掉的库：Packages to search type aliases. (Package delimiters are \",; \\t\\n\")",
+      "sourceType": "com.fdgj.binlog.properties.BinlogProperties"
+    },
+    {
+      "name": "binlog.exclude-table",
+      "type": "java.util.Map<java.lang.String,java.lang.String>",
+      "description": "<pre> 过滤掉对应库的表: \t\t\tkey:库名 \t\t\tvalue:表名     Packages to search type aliases. (Package delimiters are \",; \\t\\n\")  过滤掉对应库的表:value(abc*:  支持abc开头的通配符*) <\/pre>",
+      "sourceType": "com.fdgj.binlog.properties.BinlogProperties"
+    },
+    {
+      "name": "binlog.listen-databases",
+      "type": "java.lang.String",
+      "description": "需要监听的库：Packages to search type aliases. (Package delimiters are \",; \\t\\n\")",
+      "sourceType": "com.fdgj.binlog.properties.BinlogProperties"
+    },
+    {
+      "name": "binlog.listen-table",
+      "type": "java.util.Map<java.lang.String,java.lang.String>",
+      "description": "<pre> 需要监听的表：(value: Packages to search type aliases. (Package delimiters are \",; \\t\\n\"))  监听库对应的表:value(abc*:  支持abc开头的通配符*) <\/pre>",
+      "sourceType": "com.fdgj.binlog.properties.BinlogProperties"
+    },
+    {
+      "name": "binlog.operation-log-service-name",
+      "type": "java.lang.String",
+      "description": "接受日志的实现对象",
+      "sourceType": "com.fdgj.binlog.properties.BinlogProperties"
+    },
+    {
+      "name": "binlog.primary-key",
+      "type": "java.lang.String",
+      "sourceType": "com.fdgj.binlog.properties.BinlogProperties"
+    },
+    {
+      "name": "binlog.server-config",
+      "type": "com.fdgj.binlog.properties.ServerConfig",
+      "description": "service信息",
+      "sourceType": "com.fdgj.binlog.properties.BinlogProperties"
+    },
+    {
+      "name": "binlog.update-by-column",
+      "type": "java.lang.String",
+      "sourceType": "com.fdgj.binlog.properties.BinlogProperties"
+    },
+    {
+      "name": "binlog.update-tm-column",
+      "type": "java.lang.String",
+      "sourceType": "com.fdgj.binlog.properties.BinlogProperties"
+    }
+  ],
+  "hints": []
+}
