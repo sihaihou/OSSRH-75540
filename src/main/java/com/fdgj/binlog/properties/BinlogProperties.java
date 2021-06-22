@@ -14,9 +14,9 @@ public class BinlogProperties {
 	
 	public final static String BINLOG_PREFIX = "binlog";
 	/**
-	 * 	接受日志的实现对象
+	 * 	忽略接受日志的实现对象
 	 */
-	private String operationLogServiceName = "com.fdgj.binlog.service.impl.DefaultOperationLogService";
+	private String excludeOperationLogServiceNames = "com.fdgj.binlog.service.impl.DefaultOperationLogService";
 	/**
 	 * service信息
 	 */
@@ -105,10 +105,10 @@ public class BinlogProperties {
 	public static String getBinlogPrefix() {
 		return BINLOG_PREFIX;
 	}
-	public String getOperationLogServiceName() {
-		return operationLogServiceName;
+	public String getExcludeOperationLogServiceNames() {
+		return excludeOperationLogServiceNames;
 	}
-	public void setOperationLogServiceName(String operationLogServiceName) {
-		this.operationLogServiceName = operationLogServiceName;
+	public void setExcludeOperationLogServiceNames(String excludeOperationLogServiceNames) {
+		this.excludeOperationLogServiceNames = excludeOperationLogServiceNames;
 	}
 }

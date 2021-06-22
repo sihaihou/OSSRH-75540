@@ -1,8 +1,8 @@
 package com.fdgj.binlog.autoConfigure;
 
+import java.util.Arrays;
 import java.util.List;
-
-import javax.annotation.PostConstruct;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,8 +10,6 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.ApplicationContextAware;
-import org.springframework.stereotype.Component;
 
 import com.alibaba.otter.canal.client.CanalConnector;
 import com.alibaba.otter.canal.protocol.CanalEntry;
@@ -21,10 +19,10 @@ import com.alibaba.otter.canal.protocol.CanalEntry.Header;
 import com.alibaba.otter.canal.protocol.CanalEntry.RowChange;
 import com.alibaba.otter.canal.protocol.CanalEntry.RowData;
 import com.alibaba.otter.canal.protocol.Message;
+import com.fdgj.binlog.commons.StringUtil;
 import com.fdgj.binlog.model.LogDefinition;
 import com.fdgj.binlog.properties.BinlogProperties;
 import com.fdgj.binlog.service.OperationLogService;
-import com.fdgj.binlog.service.impl.OperationLogServiceContent;
 
 /**
  * 默认的实现
@@ -46,7 +44,7 @@ public class ParseLogAutoConfigure extends AbstractParseBinLog implements Initia
 
 	// binlog的状态 true:开启 false:关闭
 	protected volatile Boolean open = true;
-	
+
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		// 注册FilterTablePostProcessor
@@ -152,10 +150,14 @@ public class ParseLogAutoConfigure extends AbstractParseBinLog implements Initia
 	/**
 	 * 解析RowData
 	 * 
-	 * @param rowDatas  变的数据
-	 * @param database  库名
-	 * @param tableName 表名
-	 * @param eventType 类型（update、insert、delete）
+	 * @param rowDatas
+	 *            变的数据
+	 * @param database
+	 *            库名
+	 * @param tableName
+	 *            表名
+	 * @param eventType
+	 *            类型（update、insert、delete）
 	 * @throws Exception
 	 */
 	@Override
@@ -171,25 +173,41 @@ public class ParseLogAutoConfigure extends AbstractParseBinLog implements Initia
 				logger.debug("DefaultParseLog.parseRowData() 新增;database:" + database + ", tableName:" + tableName);
 				String updateByColumn = binlogProperties.getUpdateByColumn();
 				String updateTmColumn = binlogProperties.getUpdateTmColumn();
-				logDefinitions = getLogDefinitionByInsert(rowData, database, tableName, primaryKey, updateByColumn,
-						updateTmColumn);
+				logDefinitions = getLogDefinitionByInsert(rowData, database, tableName, primaryKey, updateByColumn,updateTmColumn);
 			} else {
 				logger.debug("DefaultParseLog.parseRowData() 更新;database:" + database + ", tableName:" + tableName);
 				String updateByColumn = binlogProperties.getUpdateByColumn();
 				String updateTmColumn = binlogProperties.getUpdateTmColumn();
-				logDefinitions = getLogDefinitionByUpdate(rowData, database, tableName, primaryKey, updateByColumn,
-						updateTmColumn);
+				logDefinitions = getLogDefinitionByUpdate(rowData, database, tableName, primaryKey, updateByColumn,updateTmColumn);
 			}
 			if (logDefinitions != null && !logDefinitions.isEmpty()) {
 				// Invoke log processors registered as beans in the context
 				invokeLogPostProcessors(logDefinitions, tableName);
-				//
-				OperationLogServiceContent operationLogServiceContent = applicationContext.getBean(OperationLogServiceContent.class);
-				if (operationLogServiceContent != null) {
-					// operationLogService:目前这里写死了。。。。
-					operationLogServiceContent.save(logDefinitions, binlogProperties.getOperationLogServiceName());
+				
+				// 拿到所有的实现类,循环处理
+				Map<String, OperationLogService> operationLogServiceMap = applicationContext.getBeansOfType(OperationLogService.class);
+				if (operationLogServiceMap != null) {
+					//忽略的类
+					String excludeOperationLogServiceNames = binlogProperties.getExcludeOperationLogServiceNames();
+					String[] excludeOperationLogServiceNameArray = StringUtil.strToArray(excludeOperationLogServiceNames);
+					//移除忽略的实现类
+					removeEexcludeOperationLogService(operationLogServiceMap,excludeOperationLogServiceNameArray);
+					//循环调用
+					for (OperationLogService operationLogService : operationLogServiceMap.values()) {
+						operationLogService.save(logDefinitions);
+					}
 				}
 			}
+		}
+	}
+	/**
+	 * 移除忽略的实现类
+	 * @param operationLogServiceMap
+	 * @param excludeOperationLogServiceNameArray
+	 */
+	private void removeEexcludeOperationLogService(Map<String, OperationLogService> operationLogServiceMap,String[] excludeOperationLogServiceNameArray) {
+		for (int i=0;i<excludeOperationLogServiceNameArray.length;i++) {
+			operationLogServiceMap.remove(excludeOperationLogServiceNameArray[i]);
 		}
 	}
 

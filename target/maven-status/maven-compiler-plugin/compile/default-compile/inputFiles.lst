@@ -4,7 +4,6 @@ D:\application\workspace\binlog-spring-boot-starter\src\main\java\com\fdgj\binlo
 D:\application\workspace\binlog-spring-boot-starter\src\main\java\com\fdgj\binlog\model\LogDefinition.java
 D:\application\workspace\binlog-spring-boot-starter\src\main\java\com\fdgj\binlog\annotation\EnableBinlog.java
 D:\application\workspace\binlog-spring-boot-starter\src\main\java\com\fdgj\binlog\selector\CustomizedImportSelector.java
-D:\application\workspace\binlog-spring-boot-starter\src\main\java\com\fdgj\binlog\service\impl\OperationLogServiceContent.java
 D:\application\workspace\binlog-spring-boot-starter\src\main\java\com\fdgj\binlog\autoConfigure\AbstractParseBinLog.java
 D:\application\workspace\binlog-spring-boot-starter\src\main\java\com\fdgj\binlog\autoConfigure\ParseLogAutoConfigure.java
 D:\application\workspace\binlog-spring-boot-starter\src\main\java\com\fdgj\binlog\commons\ToString.java

@@ -14,6 +14,12 @@
       "sourceType": "com.fdgj.binlog.properties.BinlogProperties"
     },
     {
+      "name": "binlog.exclude-operation-log-service-names",
+      "type": "java.lang.String",
+      "description": "忽略接受日志的实现对象",
+      "sourceType": "com.fdgj.binlog.properties.BinlogProperties"
+    },
+    {
       "name": "binlog.exclude-table",
       "type": "java.util.Map<java.lang.String,java.lang.String>",
       "description": "<pre> 过滤掉对应库的表: \t\t\tkey:库名 \t\t\tvalue:表名     Packages to search type aliases. (Package delimiters are \",; \\t\\n\")  过滤掉对应库的表:value(abc*:  支持abc开头的通配符*) <\/pre>",
@@ -32,17 +38,9 @@
       "sourceType": "com.fdgj.binlog.properties.BinlogProperties"
     },
     {
-      "name": "binlog.operation-log-service-name",
-      "type": "java.lang.String",
-      "description": "接受日志的实现对象",
-      "sourceType": "com.fdgj.binlog.properties.BinlogProperties",
-      "defaultValue": "com.fdgj.binlog.service.impl.DefaultOperationLogService"
-    },
-    {
       "name": "binlog.primary-key",
       "type": "java.lang.String",
-      "sourceType": "com.fdgj.binlog.properties.BinlogProperties",
-      "defaultValue": "id"
+      "sourceType": "com.fdgj.binlog.properties.BinlogProperties"
     },
     {
       "name": "binlog.server-config",
@@ -53,14 +51,12 @@
     {
       "name": "binlog.update-by-column",
       "type": "java.lang.String",
-      "sourceType": "com.fdgj.binlog.properties.BinlogProperties",
-      "defaultValue": "upd_by"
+      "sourceType": "com.fdgj.binlog.properties.BinlogProperties"
     },
     {
       "name": "binlog.update-tm-column",
       "type": "java.lang.String",
-      "sourceType": "com.fdgj.binlog.properties.BinlogProperties",
-      "defaultValue": "upd_tm"
+      "sourceType": "com.fdgj.binlog.properties.BinlogProperties"
     }
   ],
   "hints": []
