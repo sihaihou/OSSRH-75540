@@ -1,6 +1,7 @@
 com\fdgj\binlog\processor\impl\DefaultFilterTableProcessor.class
 com\fdgj\binlog\autoConfigure\ParseBinLog.class
 com\fdgj\binlog\processor\LogPostProcessor.class
+META-INF\spring-configuration-metadata.json
 com\fdgj\binlog\autoConfigure\AbstractParseBinLog.class
 com\fdgj\binlog\service\impl\DefaultOperationLogService.class
 com\fdgj\binlog\commons\StringUtil.class
@@ -16,5 +17,7 @@ com\fdgj\binlog\processor\FilterTablePostProcessor.class
 com\fdgj\binlog\properties\ServerConfig.class
 com\fdgj\binlog\annotation\EnableBinlog.class
 com\fdgj\binlog\processor\AbstractFilterPostProcessor.class
+com\fdgj\binlog\autoConfigure\ParseLogAutoConfigure$1.class
 com\fdgj\binlog\processor\AbstractLogPostProcessor.class
 com\fdgj\binlog\controller\IndexController.class
+com\fdgj\binlog\service\impl\OperationLogServiceContent.class

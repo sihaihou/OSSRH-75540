@@ -35,12 +35,14 @@
       "name": "binlog.operation-log-service-name",
       "type": "java.lang.String",
       "description": "接受日志的实现对象",
-      "sourceType": "com.fdgj.binlog.properties.BinlogProperties"
+      "sourceType": "com.fdgj.binlog.properties.BinlogProperties",
+      "defaultValue": "com.fdgj.binlog.service.impl.DefaultOperationLogService"
     },
     {
       "name": "binlog.primary-key",
       "type": "java.lang.String",
-      "sourceType": "com.fdgj.binlog.properties.BinlogProperties"
+      "sourceType": "com.fdgj.binlog.properties.BinlogProperties",
+      "defaultValue": "id"
     },
     {
       "name": "binlog.server-config",
@@ -51,12 +53,14 @@
     {
       "name": "binlog.update-by-column",
       "type": "java.lang.String",
-      "sourceType": "com.fdgj.binlog.properties.BinlogProperties"
+      "sourceType": "com.fdgj.binlog.properties.BinlogProperties",
+      "defaultValue": "upd_by"
     },
     {
       "name": "binlog.update-tm-column",
       "type": "java.lang.String",
-      "sourceType": "com.fdgj.binlog.properties.BinlogProperties"
+      "sourceType": "com.fdgj.binlog.properties.BinlogProperties",
+      "defaultValue": "upd_tm"
     }
   ],
   "hints": []

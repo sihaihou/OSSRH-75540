@@ -8,20 +8,20 @@ package com.fdgj.binlog.commons;
 public class StringUtil {
 	/**
 	 * 字符串转String[]
-	 * @param str
+	 * @param strArray
 	 * @return
 	 */
-	public static String[] strToArray(String str) {
+	public static String[] strToArray(String strArray) {
 		String[] arr = null; 
-		if(str == null || str.equals("")) {
+		if(strArray == null || strArray.equals("")) {
 			return new String[] {};
 		}
-		if(str.contains(",")) {
-			arr = str.split(",");
-		}else if(str.contains(";")) {
-			arr = str.split(";");
+		if(strArray.contains(",")) {
+			arr = strArray.split(",");
+		}else if(strArray.contains(";")) {
+			arr = strArray.split(";");
 		}else {
-			arr = new String[] {str};
+			arr = new String[] {strArray};
 		}
 		return arr;
 	}

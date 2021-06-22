@@ -17,9 +17,11 @@ public class IndexController {
 		parseLogAutoConfigure.open();
 		return "open success";
 	}
+	
 	@RequestMapping("close")
 	public String close() throws Exception {
 		parseLogAutoConfigure.close();
 		return "close success";
 	}
+	
 }

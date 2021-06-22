@@ -1,2 +1,2 @@
-##com.fdgj.binlog.autoConfigure.ParseLogAutoConfigure
+##com.fdgj.binlog.autoConfigure.ParseLogAutoConfigure,\
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\

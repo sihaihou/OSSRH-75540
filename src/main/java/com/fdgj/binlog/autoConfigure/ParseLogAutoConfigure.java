@@ -6,6 +6,7 @@ import javax.annotation.PostConstruct;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -34,7 +35,7 @@ import com.fdgj.binlog.service.impl.OperationLogServiceContent;
 @SuppressWarnings("all")
 @EnableConfigurationProperties(BinlogProperties.class)
 @ConditionalOnClass(value = { BinlogProperties.class })
-public class ParseLogAutoConfigure extends AbstractParseBinLog {
+public class ParseLogAutoConfigure extends AbstractParseBinLog implements InitializingBean {
 
 	private static Logger logger = LoggerFactory.getLogger(ParseLogAutoConfigure.class);
 
@@ -45,10 +46,9 @@ public class ParseLogAutoConfigure extends AbstractParseBinLog {
 
 	// binlog的状态 true:开启 false:关闭
 	protected volatile Boolean open = true;
-
-	@PostConstruct
-	public void initMethod() {
-
+	
+	@Override
+	public void afterPropertiesSet() throws Exception {
 		// 注册FilterTablePostProcessor
 		registrFilterTablePostProcessors();
 
@@ -184,8 +184,7 @@ public class ParseLogAutoConfigure extends AbstractParseBinLog {
 				// Invoke log processors registered as beans in the context
 				invokeLogPostProcessors(logDefinitions, tableName);
 				//
-				OperationLogServiceContent operationLogServiceContent = applicationContext
-						.getBean(OperationLogServiceContent.class);
+				OperationLogServiceContent operationLogServiceContent = applicationContext.getBean(OperationLogServiceContent.class);
 				if (operationLogServiceContent != null) {
 					// operationLogService:目前这里写死了。。。。
 					operationLogServiceContent.save(logDefinitions, binlogProperties.getOperationLogServiceName());
