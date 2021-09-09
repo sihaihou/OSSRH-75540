@@ -1,2 +1,2 @@
-##com.fdgj.binlog.autoConfigure.ParseLogAutoConfigure,\
+##com.reyco.core.binlog.autoConfigure.ParseLogAutoConfigure,\
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
