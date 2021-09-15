@@ -11,6 +11,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 
 import com.alibaba.otter.canal.client.CanalConnector;
 import com.alibaba.otter.canal.protocol.CanalEntry;
@@ -21,10 +22,14 @@ import com.alibaba.otter.canal.protocol.CanalEntry.RowChange;
 import com.alibaba.otter.canal.protocol.CanalEntry.RowData;
 import com.alibaba.otter.canal.protocol.Message;
 import com.reyco.core.binlog.commons.StringUtil;
+import com.reyco.core.binlog.controller.IndexController;
 import com.reyco.core.binlog.model.GenericLogDefinition;
 import com.reyco.core.binlog.model.LogDefinition;
+import com.reyco.core.binlog.processor.impl.DefaultFilterTableProcessor;
+import com.reyco.core.binlog.processor.impl.DefaultLogPostProcessor;
 import com.reyco.core.binlog.properties.BinlogProperties;
 import com.reyco.core.binlog.service.OperationLogService;
+import com.reyco.core.binlog.service.impl.DefaultOperationLogService;
 
 /**
  * 默认的实现
@@ -262,5 +267,4 @@ public class ParseLogAutoConfigure extends AbstractParseBinLog implements Initia
 			}
 		}
 	}
-
 }

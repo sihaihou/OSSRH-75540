@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.reyco.core.binlog.autoConfigure.ParseBinLog;
 
 @RestController
+@RequestMapping("/index/binlog/")
 public class IndexController {
 	
 	@Autowired

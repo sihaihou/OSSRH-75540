@@ -1,4 +1,4 @@
-package com.reyco.core.binlog.selector;
+package com.reyco.core.binlog.annotation;
 
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.BeansException;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
@@ -367,7 +368,6 @@ public abstract class AbstractParseBinLog implements ParseBinLog, ApplicationCon
 			}
 		}
 	}
-
 	/**
 	 * 排序
 	 * 
@@ -376,26 +376,5 @@ public abstract class AbstractParseBinLog implements ParseBinLog, ApplicationCon
 	private static void sortPostProcessors(List<?> postProcessors) {
 		Comparator<Object> comparatorToUse = new AnnotationAwareOrderComparator();
 		postProcessors.sort(comparatorToUse);
-	}
-	@Bean
-	public DefaultFilterTableProcessor defaultFilterTableProcessor() {
-		DefaultFilterTableProcessor defaultFilterTableProcessor = new DefaultFilterTableProcessor();
-		return defaultFilterTableProcessor;
-	}
-	@Bean
-	public DefaultLogPostProcessor defaultLogPostProcessor() {
-		DefaultLogPostProcessor defaultLogPostProcessor = new DefaultLogPostProcessor();
-		return defaultLogPostProcessor;
-	}
-	
-	@Bean
-	public DefaultOperationLogService defaultOperationLogService() {
-		DefaultOperationLogService defaultOperationLogService = new DefaultOperationLogService();
-		return defaultOperationLogService;
-	}
-	@Bean
-	public IndexController indexController() {
-		IndexController indexController = new IndexController();
-		return indexController;
 	}
 }

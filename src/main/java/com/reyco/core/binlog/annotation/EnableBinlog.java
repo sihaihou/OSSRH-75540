@@ -8,12 +8,10 @@ import java.lang.annotation.Target;
 
 import org.springframework.context.annotation.Import;
 
-import com.reyco.core.binlog.selector.ParseLogRegistrar;
-
 @Documented
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Import(ParseLogRegistrar.class)
+@Import(ParseLogConfigrationSelector.class)
 public @interface EnableBinlog {
 
 }
