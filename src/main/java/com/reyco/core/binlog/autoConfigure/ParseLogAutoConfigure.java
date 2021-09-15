@@ -21,6 +21,7 @@ import com.alibaba.otter.canal.protocol.CanalEntry.RowChange;
 import com.alibaba.otter.canal.protocol.CanalEntry.RowData;
 import com.alibaba.otter.canal.protocol.Message;
 import com.reyco.core.binlog.commons.StringUtil;
+import com.reyco.core.binlog.model.GenericLogDefinition;
 import com.reyco.core.binlog.model.LogDefinition;
 import com.reyco.core.binlog.properties.BinlogProperties;
 import com.reyco.core.binlog.service.OperationLogService;

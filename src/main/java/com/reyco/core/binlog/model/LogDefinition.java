@@ -1,113 +1,129 @@
 package com.reyco.core.binlog.model;
 
-import com.reyco.core.binlog.commons.ToString;
-
 /**
- * 日志定义对象
- * 		可以非常清楚的描述一次操作事件
  * @author reyco
- *
+ * @date 2021.09.15
+ * @version v1.0.1
  */
-public class LogDefinition extends ToString	{
+public interface LogDefinition {
 	/**
-	 * 
+	 * 获取事件数据库的库名
+	 * @return
 	 */
-	private static final long serialVersionUID = -7887823061703570253L;
-	/**数据库*/
-	private String databaseName;
-	/**表名*/
-	private String tableName;
-	/**操作记录的id*/
-	private Long recordId;
-	/**事件类型(insert、delete、update)*/
-	private String eventType;
-	/**操作成功与否*/
-	private Boolean updated;
-	/**操作字段*/
-	private String column;
-	/**操作字段的描述信息*/
-	private String columnDesc;
-	/**操作前value*/
-	private Object beforeValue;
-	/**操作后value*/
-	private Object aftreValue;
-	/**操作人id*/
-	private Long operationId;
-	/**操作人名称*/
-	private String operationName;
-	/**操作时间*/
-	private Long operationTime;
-	
-	public String getDatabaseName() {
-		return databaseName;
-	}
-	public void setDatabaseName(String databaseName) {
-		this.databaseName = databaseName;
-	}
-	public String getTableName() {
-		return tableName;
-	}
-	public void setTableName(String tableName) {
-		this.tableName = tableName;
-	}
-	public String getEventType() {
-		return eventType;
-	}
-	public void setEventType(String eventType) {
-		this.eventType = eventType;
-	}
-	public String getColumn() {
-		return column;
-	}
-	public void setColumn(String column) {
-		this.column = column;
-	}
-	public Object getBeforeValue() {
-		return beforeValue;
-	}
-	public void setBeforeValue(Object beforeValue) {
-		this.beforeValue = beforeValue;
-	}
-	public Object getAftreValue() {
-		return aftreValue;
-	}
-	public void setAftreValue(Object aftreValue) {
-		this.aftreValue = aftreValue;
-	}
-	public Long getOperationId() {
-		return operationId;
-	}
-	public void setOperationId(Long operationId) {
-		this.operationId = operationId;
-	}
-	public String getOperationName() {
-		return operationName;
-	}
-	public void setOperationName(String operationName) {
-		this.operationName = operationName;
-	}
-	public Long getOperationTime() {
-		return operationTime;
-	}
-	public void setOperationTime(Long operationTime) {
-		this.operationTime = operationTime;
-	}
-	public Boolean getUpdated() {
-		return updated;
-	}
-	public void setUpdated(Boolean updated) {
-		this.updated = updated;
-	}
-	public Long getRecordId() {
-		return recordId;
-	}
-	public void setRecordId(Long recordId) {
-		this.recordId = recordId;
-	}
-	public String getColumnDesc() {
-		return columnDesc;
-	}
-	public void setColumnDesc(String columnDesc) {
-		this.columnDesc = columnDesc;
-	}
+	String getDatabaseName();
+	/**
+	 * 重新设置事件数据库的库名
+	 * @param databaseName
+	 */
+	void setDatabaseName(String databaseName);
+	/**
+	 * 获取事件表的表名
+	 * @return
+	 */
+	String getTableName();
+	/**
+	 * 重新设置事件表的表名
+	 * @param tableName
+	 */
+	void setTableName(String tableName);
+	/**
+	 * 获取事件类型(insert、delete、update)
+	 * @return
+	 */
+	String getEventType();
+	/**
+	 * 重新设置事件类型(insert、delete、update)
+	 * @param eventType
+	 */
+	void setEventType(String eventType);
+	/**
+	 * 获取操作数据的主键
+	 * @return
+	 */
+	Object getRecordId();
+	/**
+	 * 重新设置操作数据的主键
+	 * @param recordId
+	 */
+	void setRecordId(Object recordId);
+	/**
+	 * 获取事件操作前的value值
+	 * @return
+	 */
+	Object getBeforeValue();
+	/**
+	 * 重新设置事件操作前的value值
+	 * @param beforeValue
+	 */
+	void setBeforeValue(Object beforeValue);
+	/**
+	 * 获取事件操作后的value值
+	 * @return
+	 */
+	Object getAftreValue();
+	/**
+	 * 重新设置事件操作后的value值
+	 * @param aftreValue
+	 */
+	void setAftreValue(Object aftreValue);
+	/**
+	 * 获取操作人的主键
+	 * @return
+	 */
+	Object getOperationerId();
+	/**
+	 * 重新设置操作人的主键
+	 * @param operationId
+	 */
+	void setOperationerId(Object operationId);
+	/**
+	 * 获取操作人的名称
+	 * @return
+	 */
+	String getOperationerName();
+	/**
+	 * 重新设置操作人的名称
+	 * @param operationName
+	 */
+	void setOperationerName(String operationName);
+	/**
+	 * 获取操作的时间
+	 * @return
+	 */
+	Object getOperationTime();
+	/**
+	 * 重新设置操作的时间
+	 * @param operationTime
+	 */
+	void setOperationTime(Object operationTime);
+	/**
+	 * 获取操作是否成功
+	 * @return
+	 */
+	Boolean getUpdated();
+	/**
+	 * 重新设置操作是否成功
+	 * @param updated
+	 */
+	void setUpdated(Boolean updated);
+	/**
+	 * 获取操作字段
+	 * @return
+	 */
+	String getColumn();
+	/**
+	 * 重新设置操作字段
+	 * @param column
+	 */
+	void setColumn(String column);
+	/**
+	 * 获取操作字段的描述
+	 * @return
+	 */
+	String getColumnDesc();
+	/**
+	 * 重新设置操作字段的描述
+	 * @param columnDesc
+	 */
+	void setColumnDesc(String columnDesc);
 }

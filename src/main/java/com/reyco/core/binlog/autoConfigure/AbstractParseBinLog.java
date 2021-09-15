@@ -20,6 +20,7 @@ import com.alibaba.otter.canal.protocol.CanalEntry.Column;
 import com.alibaba.otter.canal.protocol.CanalEntry.EventType;
 import com.alibaba.otter.canal.protocol.CanalEntry.RowData;
 import com.reyco.core.binlog.controller.IndexController;
+import com.reyco.core.binlog.model.GenericLogDefinition;
 import com.reyco.core.binlog.model.LogDefinition;
 import com.reyco.core.binlog.processor.FilterTablePostProcessor;
 import com.reyco.core.binlog.processor.LogPostProcessor;
@@ -88,20 +89,20 @@ public abstract class AbstractParseBinLog implements ParseBinLog, ApplicationCon
 		//
 		LogDefinition logDefinition = null;
 
-		Long recordId = null;
+		Object recordId = null;
 		for (CanalEntry.Column column : beforeColumnsList) {
 			if (recordId != null) {
 				break;
 			}
 			String name = column.getName();
 			if (name.equalsIgnoreCase(tablePrimaryKey)) {
-				recordId = Long.valueOf(column.getValue());
+				recordId = column.getValue();
 			}
 		}
 		// 遍历所有的字段
 		for (CanalEntry.Column column : beforeColumnsList) {
 			if (column.getUpdated()) { // 是否更新过
-				logDefinition = new LogDefinition();
+				logDefinition = new GenericLogDefinition();
 				String columnName = column.getName();
 				String columnValue = column.getValue();
 				logDefinition.setUpdated(UPDATE_SUCCESS);
@@ -131,22 +132,22 @@ public abstract class AbstractParseBinLog implements ParseBinLog, ApplicationCon
 		List<LogDefinition> definitions = new ArrayList<>();
 		// 新增后的数据
 		List<Column> afterColumnsList = rowData.getAfterColumnsList();
-		Long recordId = null;
+		Object recordId = null;
 		// 操作人
-		String operationName = null;
-		// 操作事件
-		Long operationTime = null;
+		String operationerName = null;
+		// 操作时间
+		Object operationTime = null;
 		for (CanalEntry.Column column : afterColumnsList) {
-			if (recordId != null && operationName != null && operationTime != null) {
+			if (recordId != null && operationerName != null && operationTime != null) {
 				break;
 			}
 			String name = column.getName();
 			if (name.equalsIgnoreCase(updateByColumn)) {
-				operationName = column.getValue();
+				operationerName = column.getValue();
 			} else if (name.equalsIgnoreCase(updateTmColumn)) {
-				operationTime = Long.valueOf(column.getValue());
+				operationTime = column.getValue();
 			} else if (name.equalsIgnoreCase(tablePrimaryKey)) {
-				recordId = Long.valueOf(column.getValue());
+				recordId = column.getValue();
 			}
 		}
 		//
@@ -154,7 +155,7 @@ public abstract class AbstractParseBinLog implements ParseBinLog, ApplicationCon
 		// 遍历所有的字段
 		for (CanalEntry.Column column : afterColumnsList) {
 			if (column.getUpdated()) {
-				logDefinition = new LogDefinition();
+				logDefinition = new GenericLogDefinition();
 				String columnName = column.getName();
 				String columnValue = column.getValue();
 				logDefinition.setUpdated(UPDATE_SUCCESS);
@@ -164,7 +165,7 @@ public abstract class AbstractParseBinLog implements ParseBinLog, ApplicationCon
 				logDefinition.setEventType(INSERT_EVENT);
 				logDefinition.setColumn(columnName);
 				logDefinition.setAftreValue(columnValue);
-				logDefinition.setOperationName(operationName);
+				logDefinition.setOperationerName(operationerName);
 				logDefinition.setOperationTime(operationTime);
 				definitions.add(logDefinition);
 			}
@@ -190,28 +191,28 @@ public abstract class AbstractParseBinLog implements ParseBinLog, ApplicationCon
 		List<Column> beforeColumnsList = rowData.getBeforeColumnsList();
 		List<Column> afterColumnsList = rowData.getAfterColumnsList();
 
-		Long recordId = null;
+		Object recordId = null;
 		// 操作人
-		String operationName = null;
+		String operationerName = null;
 		// 操作事件
-		Long operationTime = null;
+		Object operationTime = null;
 		for (CanalEntry.Column column : afterColumnsList) {
-			if (recordId != null && operationName != null && operationTime != null) {
+			if (recordId != null && operationerName != null && operationTime != null) {
 				break;
 			}
 			String name = column.getName();
 			if (name.equalsIgnoreCase(updateByColumn)) {
-				operationName = column.getValue();
+				operationerName = column.getValue();
 			} else if (name.equalsIgnoreCase(updateTmColumn)) {
-				operationTime = Long.valueOf(column.getValue());
+				operationTime = column.getValue();
 			} else if (name.equalsIgnoreCase(tablePrimaryKey)) {
-				recordId = Long.valueOf(column.getValue());
+				recordId = column.getValue();
 			}
 		}
 		// 遍历所有的字段
 		for (CanalEntry.Column column : afterColumnsList) {
 			if (column.getUpdated()) {
-				logDefinition = new LogDefinition();
+				logDefinition = new GenericLogDefinition();
 				String columnName = column.getName();
 				String columnValue = column.getValue();
 				logDefinition.setUpdated(UPDATE_SUCCESS);
@@ -229,7 +230,7 @@ public abstract class AbstractParseBinLog implements ParseBinLog, ApplicationCon
 					}
 				}
 				logDefinition.setAftreValue(columnValue);
-				logDefinition.setOperationName(operationName);
+				logDefinition.setOperationerName(operationerName);
 				logDefinition.setOperationTime(operationTime);
 				definitions.add(logDefinition);
 			}
