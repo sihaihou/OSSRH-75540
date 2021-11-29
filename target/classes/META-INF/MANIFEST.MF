@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Implementation-Title: binlog-spring-boot-starter
 Implementation-Version: 0.0.1-SNAPSHOT
 Built-By: reyco
-Implementation-Vendor-Id: com.fdgj.binlog
+Implementation-Vendor-Id: com.reyco.binlog
 Build-Jdk: 1.8.0_291
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
  ot-starter-parent/binlog-spring-boot-starter
