@@ -33,14 +33,14 @@
         实现OperationLogService接口,实现save()方法，并交给spring管理。</p>
 <pre>
 	@Service
-	public class OperationLogServiceImpl implements OperationLogService{
+	public class OperationLogServiceImpl implements OperationLogService {
 
 		protected static Logger logger = LoggerFactory.getLogger(OperationLogServiceImpl.class);
 
 		@Override
 		public void save(List<LogDefinition> logDefinitions) throws Exception {
 			for (LogDefinition logDefinition : logDefinitions) {
-				logger.debug("发布事件："+logDefinition);
+				logger.debug("发布事件：" + logDefinition);
 			}
 		}
 	}
