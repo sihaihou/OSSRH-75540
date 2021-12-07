@@ -23,7 +23,6 @@
 	@EnableBinlog
 	@SpringBootApplication
 	public class TestMybatisApplication {
-
 		public static void main(String[] args) {
 			SpringApplication.run(TestMybatisApplication.class, args);
 		}
