@@ -35,13 +35,13 @@
 	@Service
 	public class OperationLogServiceImpl implements OperationLogService {
 
-		protected static Logger logger = LoggerFactory.getLogger(OperationLogServiceImpl.class);
+			protected static Logger logger = LoggerFactory.getLogger(OperationLogServiceImpl.class);
 
-		@Override
-		public void save(List<LogDefinition> logDefinitions) throws Exception {
-			for (LogDefinition logDefinition : logDefinitions) {
-				logger.debug("发布事件：" + logDefinition);
+			@Override
+			public void save(List<LogDefinition> logDefinitions) throws Exception {
+				for (LogDefinition logDefinition : logDefinitions) {
+					logger.debug("发布事件：" + logDefinition);
+				}
 			}
-		}
 		}
 </pre>
