@@ -32,7 +32,6 @@
 <p>第四步:
         实现OperationLogService接口,实现save()方法，并交给spring管理。</p>
 <pre>
-  
    	@Service
 	public class OperationLogServiceImpl implements OperationLogService{
 
@@ -45,5 +44,4 @@
 			}
 		}
 	}
-
 </pre>
