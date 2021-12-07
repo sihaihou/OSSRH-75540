@@ -13,8 +13,8 @@
 <p>第二步:
        在properties配置文件中配置cannl地址和端口</p>
 <pre>    
-   binlog.serverConfig.host=127.0.0.1
-   binlog.serverConfig.port=11111
+	binlog.serverConfig.host=127.0.0.1
+	binlog.serverConfig.port=11111
 </pre>
 
 <p>第三步:
