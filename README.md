@@ -1,7 +1,8 @@
 <h1>那有什么作用？</h1>
 <p>获取binlog日志</p>
 <h1>如何使用？</h1>
-<p>第一步:引入依赖</p>
+<p>第一步:
+      引入依赖</p>
 <pre>
    <dependency>
 	<groupId>com.housihai</groupId>
@@ -9,16 +10,16 @@
 	<version>0.0.1-RELEASE</version>
    </dependency>
 </pre>
-<p>第二步:在配置文件中配置cannl地址和端口</p>
+<p>第二步:
+       在properties配置文件中配置cannl地址和端口</p>
 <pre>    
    binlog.serverConfig.host=127.0.0.1
    binlog.serverConfig.port=11111
 </pre>
 
-<p>第三步:开启binlog</p>
+<p>第三步:
+      在启动类加上@EnableBinlog注解开启binlog</p>
 <pre>
-   在启动类加上@EnableBinlog注解开启binlog
-   	
 	@EnableBinlog
 	@SpringBootApplication
 	public class TestMybatisApplication {
@@ -30,10 +31,10 @@
 	}
 </pre>
 
-<p>第四步:监听binlog日志</p>
+<p>第四步:
+        实现OperationLogService接口,实现save()方法，并交给spring管理。</p>
 <pre>
-   实现OperationLogService接口,实现save()方法，并交给spring管理。
-   
+  
    	@Service
 	public class OperationLogServiceImpl implements OperationLogService{
 
