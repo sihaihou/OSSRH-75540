@@ -43,5 +43,5 @@
 				logger.debug("发布事件：" + logDefinition);
 			}
 		}
-	}
+		}
 </pre>
