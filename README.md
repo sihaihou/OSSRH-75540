@@ -2,13 +2,13 @@
 <p>获取binlog日志</p>
 <h1>如何使用？</h1>
 <p>第一步:引入依赖</p>
-<code>
+<pre>
    <dependency>
 	<groupId>com.housihai</groupId>
 	<artifactId>binlog-spring-boot-starter</artifactId>
 	<version>0.0.1-RELEASE</version>
    </dependency>
-</code>
+</pre>
 <p>第二步:配置cannl地址</p>
 <code>    
    binlog.serverConfig.host=47.114.74.174
