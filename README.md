@@ -10,17 +10,17 @@
    </dependency>
 </pre>
 <p>第二步:配置cannl地址</p>
-<code>    
+<pre>    
    binlog.serverConfig.host=47.114.74.174
    binlog.serverConfig.port=11111
-</code>
+</pre>
 
 <p>第三步:开启binlog</p>
-<code>
+<pre>
    在启动类加上@EnableBinlog注解开启binlog
-</code>
+</pre>
 
 <p>第四步:监听binlog日志</p>
-<code>
+<pre>
    实现OperationLogService接口,实现save()方法，并交给spring管理。
-</code>
+</pre>
