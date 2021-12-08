@@ -4,11 +4,11 @@
 <p>第一步:
       引入依赖</p>
 <pre>
-   `<dependency>`
+   <dependency>
 	<groupId>com.housihai</groupId>
 	<artifactId>binlog-spring-boot-starter</artifactId>
 	<version>0.0.1-RELEASE</version>
-   `</dependency>`
+   </dependency>
 </pre>
 <p>第二步:
        在properties配置文件中配置cannl地址和端口</p>
@@ -22,9 +22,9 @@
 <pre>
 	@EnableBinlog
 	@SpringBootApplication
-	public class TestMybatisApplication {
+	public class TestApplication {
 		public static void main(String[] args) {
-			SpringApplication.run(TestMybatisApplication.class, args);
+			SpringApplication.run(TestApplication.class, args);
 		}
 	}
 </pre>
