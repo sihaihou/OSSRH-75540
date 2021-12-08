@@ -6,10 +6,10 @@
       
 <pre>
 &#60;dependency&#62;
-   <groupId>com.housihai</groupId>
-   <artifactId>binlog-spring-boot-starter</artifactId>
-   <version>0.0.1-RELEASE</version>
-</dependency>
+   &#60;groupId&#62;com.housihai&#60;/groupId&#62;
+   &#60;artifactId&#62;binlog-spring-boot-starter&#60;/artifactId&#62;
+   &#60;version&#62;0.0.1-RELEASE&#60;/version&#62;
+&#60;/dependency&#62;
 </pre>
 
 ### 第二步: 在properties配置文件中配置cannl地址和端口
