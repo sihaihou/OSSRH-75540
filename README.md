@@ -5,7 +5,7 @@
 ### 第一步: 引入依赖
       
 <pre>
-<dependency>
+&#60;dependency&#62;
    <groupId>com.housihai</groupId>
    <artifactId>binlog-spring-boot-starter</artifactId>
    <version>0.0.1-RELEASE</version>
