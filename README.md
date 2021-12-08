@@ -1,5 +1,6 @@
 # 有什么作用?
   可以获取binlog日志
+  
 # 如何使用？</h1>
 ### 第一步: 引入依赖
       
@@ -10,15 +11,14 @@
 	<version>0.0.1-RELEASE</version>
    </dependency>
 </pre>
+
 ### 第二步: 在properties配置文件中配置cannl地址和端口
-  
 <pre>    
 	binlog.serverConfig.host=127.0.0.1
 	binlog.serverConfig.port=11111
 </pre>
 
-### 第三步: 在启动类加上@EnableBinlog注解开启binlog
-     
+### 第三步: 在启动类加上@EnableBinlog注解开启binlog   
 <pre>
 	@EnableBinlog
 	@SpringBootApplication
@@ -29,8 +29,7 @@
 	}
 </pre>
 
-### 第四步: 实现OperationLogService接口,实现save()方法，并交给spring管理。
-        
+### 第四步: 实现OperationLogService接口,实现save()方法，并交给spring管理。       
 <pre>
 	@Service
 	public class OperationLogServiceImpl implements OperationLogService {
