@@ -1,7 +1,9 @@
 # 有什么作用?
   可以获取binlog日志
   
-# 如何使用？</h1>
+# 快速开始</h1>
+开始您的第一个项目非常容易。
+
 ### 第一步: 引入依赖
       
 <pre>
@@ -44,3 +46,11 @@ public class OperationLogServiceImpl implements OperationLogService {
 	}
 }
 </pre>
+# 文档
+所有最新和长期的通知也可以从Github 通知问题这里找到。
+
+# 贡献
+欢迎贡献者加入 binlog 项目。请联系18307200213@163.com 以了解如何为此项目做出贡献。
+
+
+
