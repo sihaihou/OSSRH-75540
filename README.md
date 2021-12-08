@@ -14,7 +14,7 @@
 &#60;/dependency&#62;
 </pre>
 
-### 第二步: 在properties配置文件中配置cannl地址和端口
+### 第二步: 在properties、yaml、yml配置文件中配置cannl地址和端口
 <pre>
 binlog.serverConfig.host=127.0.0.1
 binlog.serverConfig.port=11111
