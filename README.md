@@ -35,7 +35,7 @@ public class TestApplication {
 }
 </pre>
 
-### 第四步: 实现OperationLogService接口并实现save()方法，并交给spring管理。       
+### 第四步: 实现OperationLogService接口并实现save()方法，然后交给spring管理。       
 <pre>
 @Service
 public class OperationLogServiceImpl implements OperationLogService {
