@@ -45,7 +45,7 @@ public class OperationLogServiceImpl implements OperationLogService {
 	@Override
 	public void save(List<LogDefinition> logDefinitions) throws Exception {
 		for (LogDefinition logDefinition : logDefinitions) {
-			logger.debug("发布事件：" + logDefinition);
+			logger.debug("接收到数据变更数据：" + logDefinition);
 		}
 	}
 }
